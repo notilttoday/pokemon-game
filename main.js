@@ -39,16 +39,20 @@ const enemy = {
     damageHP: 100,
     elHP: document.getElementById('health-enemy'),
     elProgressbar: document.getElementById('progressbar-enemy'),
+
     renderHP: function() {
         this.renderHPLife();
         this.renderProgressbarHP();
     },
+    
     renderHPLife: function() {
         this.elHP.innerText = this.damageHP + ' / ' + this.defaultHP;
     },
+
     renderProgressbarHP: function() {
         this.elProgressbar.style.width = (this.damageHP / this.defaultHP) * 100 + '%';
     },
+
     changeHP: function(count) {
         this.damageHP -= count;
         if (this.damageHP < 0) {
@@ -76,10 +80,10 @@ function random(num) {
 }
 
 $btnKickCharacter1.addEventListener('click', function () {
-    const damage = random(40);
+    const damage = random(30);
     attack(character, enemy, damage);
     if (enemy.damageHP > 0) {
-        const enemyDamage = random(15);
+        const enemyDamage = random(30);
         attack(enemy, character, enemyDamage);
     }
 });
