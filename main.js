@@ -82,19 +82,15 @@ function random(num) {
 $btnKickCharacter1.addEventListener('click', function () {
     const damage = random(30);
     attack(character, enemy, damage);
-    if (enemy.damageHP > 0) {
-        const enemyDamage = random(30);
-        attack(enemy, character, enemyDamage);
-    }
+    const enemyDamage = random(30);
+    attack(enemy, character, enemyDamage);
 });
 
 $btnKickCharacter2.addEventListener('click', function () {
     const damage = 10;
     attack(enemy, character, damage);
-    if (character.damageHP > 0) {
-        const characterDamage = 10;
-        attack(character, enemy, characterDamage);
-    }
+    const characterDamage = 10;
+    attack(character, enemy, characterDamage);
 });
 
 init();
