@@ -475,3 +475,19 @@ h1 {
 .action label {
     padding: 6px 0;
 }
+
+#logs {
+    max-height: 180px;
+    width: 1050px;
+    overflow-y: hidden;
+    color: white;
+    background-color: #303030;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 20px auto 0;
+}
+#logs p {
+    margin: 0;
+    padding: 5px;
+}
