@@ -64,7 +64,7 @@ const enemy = {
     changeHP(count) {
         this.damageHP -= count;
 
-        if (this.damageHP < 0) {
+        if (this.damageHP <= 0) {
             this.damageHP = 0;
             alert('Бідний ' + this.name + ' програв бій!');
             $btnKickCharacter1.disabled = true;
@@ -106,18 +106,58 @@ function random(num) {
     return Math.ceil(Math.random() * num);
 }
 
-$btnKickCharacter1.addEventListener('click', function () {
-    const damage1 = random(30);
-    const damage2 = random(30);
+function clickCounter(maxClicks, buttonElement, buttonName) {
+    let clicks = 0;
 
-    enemy.changeHP(damage2);
-    character.changeHP(damage1);
+    function updateButtonText() {
+        buttonElement.innerText = `${buttonName} [${maxClicks - clicks}/${maxClicks}]`;
+    }
+    updateButtonText();
+
+    return function () {
+        if (clicks < maxClicks) {
+            clicks++;
+            console.log(`Кнопка "${buttonName}" натиснута ${clicks} разів. Залишилося натискань: ${maxClicks - clicks}`);
+            updateButtonText();
+
+            const $p = document.createElement('p');
+            $p.innerHTML = `Використана атака: <span style="color: #03fcd7">${buttonName} [${maxClicks - clicks}/${maxClicks}]</span>`;
+            $logs.insertBefore($p, $logs.children[0]);
+
+            if (clicks === maxClicks) {
+                buttonElement.disabled = true;
+                console.log(`Кнопка "${buttonName}" більше не активна. Максимальна кількість натискань: ${maxClicks}.`);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    };
+}
+const clickBtn1 = clickCounter(5, $btnKickCharacter1, 'Thunder Jolt');
+const clickBtn2 = clickCounter(7, $btnKickCharacter2, 'Sky Attack');
+
+$btnKickCharacter1.addEventListener('click', function () {
+    if (clickBtn1()) {
+        const damage1 = random(30);
+        const damage2 = random(30);
+
+        enemy.changeHP(damage2);
+        character.changeHP(damage1);
+    } else {
+        $btnKickCharacter1.disabled = true;
+    }
 });
 
 $btnKickCharacter2.addEventListener('click', function () {
-    const damage = 10;
-    enemy.changeHP(damage);
-    character.changeHP(damage);
+    if (clickBtn2()) {
+        const damage = 10;
+
+        enemy.changeHP(damage);
+        character.changeHP(damage);
+    } else {
+        $btnKickCharacter2.disabled = true;
+    }
 });
 
 init();
