@@ -1,6 +1,4 @@
-function random(num) {
-    return Math.ceil(Math.random() * num);
-}
+import { random } from './random.js';
 
 function generateLog({ name: firstPersonName }, { name: secondPersonName }) {
     const logs = [

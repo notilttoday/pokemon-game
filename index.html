@@ -17,39 +17,38 @@
              alt="Pokemon">
     </header>
     <div class="playground">
-        <div class="pokemon character">
+        <div class="pokemon player1">
             <span class="lvl">Lv. 70</span>
-            <img src="./assets/Zapdos.png" class="sprite">
+            <img src="" class="sprite" id="player1-image">
             <div class="details">
-                <h2 class="name" id="name-character">Zapdos</h2>
+                <h2 class="name" id="name-player1"></h2>
                 <div class="hp">
                     <div class="bar">
-                        <div class="health" id="progressbar-character" style="width: 100%;"></div>
+                        <div class="health" id="progressbar-player1" style="width: 100%;"></div>
                     </div>
-                    <span class="text" id="health-character">100 / 100</span>
+                    <span class="text" id="health-player1"></span>
                 </div>
             </div>
         </div>
-
-        <div class="control">
-            <button class="button" id="btn-kick-character-1">Thunder Jolt</button>
-            <button class="button" id="btn-kick-character-2">Sky attack</button>
-        </div>
-
-        <div class="pokemon enemy">
+        
+        <div class="control container1"></div>
+        <div class="control container2"></div>
+        
+        <div class="pokemon player2">
             <span class="lvl">Lv. 70</span>
-            <img src="./assets/Moltres.png" class="sprite">
+            <img src="" class="sprite" id="player2-image">
             <div class="details">
-                <h2 class="name" id="name-enemy">Moltres</h2>
+                <h2 class="name" id="name-player2"></h2>
                 <div class="hp">
                     <div class="bar">
-                        <div class="health" id="progressbar-enemy" style="width: 100%;"></div>
+                        <div class="health" id="progressbar-player2" style="width: 100%;"></div>
                     </div>
-                    <span class="text" id="health-enemy">100 / 100</span>
+                    <span class="text" id="health-player2"></span>
                 </div>
             </div>
         </div>
     </div>
+    <div id="resetGame">Reset game</div>
     <div id="logs"></div>
 </div>
 <div class="catch_screen"></div>
